@@ -49,7 +49,27 @@
             </ToolBar>
             <TabControl>
                 <TabItem Header="Basic">
-                    
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition Height="15*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Gil"/>
+                        <TextBox Grid.Column="1" Text="{Binding Gil, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Column="2" Content="G"/>
+                        <Label Grid.Row="1" Content="GP"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding GP, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
                 </TabItem>
                 <TabItem Header="Charactor">
                     <Grid>
@@ -75,7 +95,7 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
-                                <RowDefinition/>
+                                <RowDefinition Height="5*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -107,6 +127,37 @@
                             <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Luck, UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
                         <TabControl Grid.Column="2">
+                            <TabItem Header="Limit">
+                                <Grid>
+                                    <Grid.Resources>
+                                        <local:LimitConverter x:Key="LimitConverter"/>
+                                    </Grid.Resources>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="13*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Content="Current Lv"/>
+                                    <TextBox Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.CurrentLimitLv, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <Label Grid.Row="1" Content="Bar"/>
+                                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.LimitBar, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <Label Grid.Row="2" Content="Learn"/>
+                                    <ComboBox Grid.Row="2" Grid.Column="1" SelectedIndex="{Binding ElementName=ListBoxParty, Path=SelectedItem.LimitSkill, Converter={StaticResource LimitConverter}}">
+                                        <ComboBoxItem Content="1-1"/>
+                                        <ComboBoxItem Content="1-2"/>
+                                        <ComboBoxItem Content="2-1"/>
+                                        <ComboBoxItem Content="2-2"/>
+                                        <ComboBoxItem Content="3-1"/>
+                                        <ComboBoxItem Content="3-2"/>
+                                        <ComboBoxItem Content="4-1"/>
+                                    </ComboBox>
+                                </Grid>
+                            </TabItem>
                             <TabItem Header="Material">
                                 <ListBox ItemsSource="{Binding ElementName=ListBoxParty, Path=SelectedItem.Materias}">
                                     <ListBox.Resources>
@@ -142,6 +193,33 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                </TabItem>
+                <TabItem Header="Material">
+                    <ListBox ItemsSource="{Binding Items}">
+                        <ListBox.Resources>
+                            <local:MaterialConverter x:Key="MaterialConverter"/>
+                        </ListBox.Resources>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <ComboBox Width="125" ItemsSource="{Binding Path=DataContext.Info.Materias, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}"
+                                                  DisplayMemberPath="Name" SelectedIndex="{Binding ID, Converter={StaticResource MaterialConverter}}"/>
+                                    <Label Content=" Exp:"/>
+                                    <TextBox Width="60" Text="{Binding Exp, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="Party">
+                    <TabItem.Resources>
+                        <local:MemberConverter x:Key="MemberConverter"/>
+                    </TabItem.Resources>
+                    <StackPanel>
+                        <ComboBox ItemsSource="{Binding Info.Members}" DisplayMemberPath="Name" SelectedIndex="{Binding Party1, Converter={StaticResource MemberConverter}}"/>
+                        <ComboBox ItemsSource="{Binding Info.Members}" DisplayMemberPath="Name" SelectedIndex="{Binding Party2, Converter={StaticResource MemberConverter}}"/>
+                        <ComboBox ItemsSource="{Binding Info.Members}" DisplayMemberPath="Name" SelectedIndex="{Binding Party3, Converter={StaticResource MemberConverter}}"/>
+                    </StackPanel>
                 </TabItem>
             </TabControl>
         </DockPanel>

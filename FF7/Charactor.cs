@@ -101,5 +101,41 @@ namespace FF7
 			get { return SaveData.Instance().ReadNumber(mAddress + 0x07, 1); }
 			set { Util.WriteNumber(mAddress + 0x07, 1, value, 0, 255); }
 		}
+
+		public uint CurrentLimitLv
+		{
+			get { return SaveData.Instance().ReadNumber(mAddress + 0x0E, 1); }
+			set { Util.WriteNumber(mAddress + 0x0E, 1, value, 1, 4); }
+		}
+
+		public uint LimitBar
+		{
+			get { return SaveData.Instance().ReadNumber(mAddress + 0x0F, 1); }
+			set { Util.WriteNumber(mAddress + 0x0F, 1, value, 0, 255); }
+		}
+
+		public uint LimitSkill
+		{
+			get { return SaveData.Instance().ReadNumber(mAddress + 0x22, 2); }
+			set { SaveData.Instance().WriteNumber(mAddress + 0x22, 2, value); }
+		}
+
+		public uint Weapon
+		{
+			get { return SaveData.Instance().ReadNumber(mAddress + 0x1C, 1); }
+			set { SaveData.Instance().WriteNumber(mAddress + 0x1C, 1, value); }
+		}
+
+		public uint Armor
+		{
+			get { return SaveData.Instance().ReadNumber(mAddress + 0x1D, 1); }
+			set { SaveData.Instance().WriteNumber(mAddress + 0x1D, 1, value); }
+		}
+
+		public uint Accessory
+		{
+			get { return SaveData.Instance().ReadNumber(mAddress + 0x1D, 1); }
+			set { SaveData.Instance().WriteNumber(mAddress + 0x1D, 1, value); }
+		}
 	}
 }

@@ -8,6 +8,7 @@ namespace FF7
 		private static Info mThis;
 		public List<NameValueInfo> Items { get; private set; } = new List<NameValueInfo>();
 		public List<NameValueInfo> Materias { get; private set; } = new List<NameValueInfo>();
+		public List<NameValueInfo> Members { get; private set; } = new List<NameValueInfo>();
 
 		private Info() { }
 
@@ -40,6 +41,7 @@ namespace FF7
 		{
 			AppendList("info\\item.txt", Items);
 			AppendList("info\\materia.txt", Materias);
+			AppendList("info\\member.txt", Members);
 		}
 
 		private void AppendList<Type>(String filename, List<Type> items)

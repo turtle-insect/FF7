@@ -66,8 +66,10 @@
     <Compile Include="Info.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemConverter.cs" />
+    <Compile Include="LimitConverter.cs" />
     <Compile Include="Materia.cs" />
     <Compile Include="MaterialConverter.cs" />
+    <Compile Include="MemberConverter.cs" />
     <Compile Include="NameValueInfo.cs" />
     <Compile Include="SaveData.cs" />
     <Compile Include="Util.cs" />
