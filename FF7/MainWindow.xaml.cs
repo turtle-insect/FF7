@@ -79,6 +79,18 @@ namespace FF7
 			item.ID = dlg.ID;
 		}
 
+		private void ButtonWeaponChoice_Click(object sender, RoutedEventArgs e)
+		{
+			var chara = ListBoxParty.SelectedItem as Charactor;
+			if (chara == null) return;
+
+			var dlg = new ChoiceWindow();
+			dlg.Type = ChoiceWindow.eType.eWeapon;
+			dlg.ID = chara.Weapon;
+			dlg.ShowDialog();
+			chara.Weapon = dlg.ID;
+		}
+
 		private void Load(String filename, bool force)
 		{
 			if (SaveData.Instance().Open(filename, force) == false)

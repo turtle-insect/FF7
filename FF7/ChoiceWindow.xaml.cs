@@ -19,7 +19,14 @@ namespace FF7
     /// </summary>
     public partial class ChoiceWindow : Window
     {
+		public enum eType
+		{
+			eItem,
+			eWeapon,
+		};
+
 		public uint ID { get; set; }
+		public eType Type { get; set; } = eType.eItem;
 
 		public ChoiceWindow()
         {
@@ -52,6 +59,7 @@ namespace FF7
 		{
 			ListBoxItem.Items.Clear();
 			var items = Info.Instance().Items;
+			if (Type == eType.eWeapon) items = Info.Instance().Weapons;
 
 			foreach (var item in items)
 			{

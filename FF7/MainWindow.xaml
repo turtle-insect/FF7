@@ -127,6 +127,29 @@
                             <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Luck, UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
                         <TabControl Grid.Column="2">
+                            <TabItem Header="Equipment">
+                                <Grid>
+                                    <Grid.Resources>
+                                        <local:WeaponConverter x:Key="WeaponConverter"/>
+                                    </Grid.Resources>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="13*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="70"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Content="Weapon"/>
+                                    <Label Grid.Column="1" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Weapon, Converter={StaticResource WeaponConverter}}"/>
+                                    <Button Grid.Column="2" Content="..." Click="ButtonWeaponChoice_Click"/>
+                                    <Label Grid.Row="1" Content="Armor"/>
+                                    <Label Grid.Row="2" Content="Accessory"/>
+                                </Grid>
+                            </TabItem>
                             <TabItem Header="Limit">
                                 <Grid>
                                     <Grid.Resources>

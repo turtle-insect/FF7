@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace FF7
 {
-    class Charactor
-    {
+    class Charactor : INotifyPropertyChanged
+	{
 		private readonly uint mAddress;
 		private readonly String mName;
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		public ObservableCollection<Materia> Materias { get; set; } = new ObservableCollection<Materia>();
 
@@ -123,7 +125,11 @@ namespace FF7
 		public uint Weapon
 		{
 			get { return SaveData.Instance().ReadNumber(mAddress + 0x1C, 1); }
-			set { SaveData.Instance().WriteNumber(mAddress + 0x1C, 1, value); }
+			set
+			{
+				SaveData.Instance().WriteNumber(mAddress + 0x1C, 1, value);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Weapon)));
+			}
 		}
 
 		public uint Armor
