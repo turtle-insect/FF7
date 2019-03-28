@@ -8,6 +8,7 @@ namespace FF7
 		private static Info mThis;
 		public List<NameValueInfo> Items { get; private set; } = new List<NameValueInfo>();
 		public List<NameValueInfo> Weapons { get; private set; } = new List<NameValueInfo>();
+		public List<NameValueInfo> Armors { get; private set; } = new List<NameValueInfo>();
 		public List<NameValueInfo> Materias { get; private set; } = new List<NameValueInfo>();
 		public List<NameValueInfo> Members { get; private set; } = new List<NameValueInfo>();
 
@@ -42,6 +43,7 @@ namespace FF7
 		{
 			AppendList("info\\item.txt", Items);
 			AppendList("info\\weapon.txt", Weapons);
+			AppendList("info\\armor.txt", Armors);
 			AppendList("info\\materia.txt", Materias);
 			AppendList("info\\member.txt", Members);
 		}

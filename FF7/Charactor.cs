@@ -135,13 +135,21 @@ namespace FF7
 		public uint Armor
 		{
 			get { return SaveData.Instance().ReadNumber(mAddress + 0x1D, 1); }
-			set { SaveData.Instance().WriteNumber(mAddress + 0x1D, 1, value); }
+			set
+			{
+				SaveData.Instance().WriteNumber(mAddress + 0x1D, 1, value);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Armor)));
+			}
 		}
 
 		public uint Accessory
 		{
-			get { return SaveData.Instance().ReadNumber(mAddress + 0x1D, 1); }
-			set { SaveData.Instance().WriteNumber(mAddress + 0x1D, 1, value); }
+			get { return SaveData.Instance().ReadNumber(mAddress + 0x1E, 1); }
+			set
+			{
+				SaveData.Instance().WriteNumber(mAddress + 0x1E, 1, value);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Accessory)));
+			}
 		}
 	}
 }

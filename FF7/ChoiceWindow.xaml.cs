@@ -23,6 +23,7 @@ namespace FF7
 		{
 			eItem,
 			eWeapon,
+			eArmor,
 		};
 
 		public uint ID { get; set; }
@@ -60,6 +61,7 @@ namespace FF7
 			ListBoxItem.Items.Clear();
 			var items = Info.Instance().Items;
 			if (Type == eType.eWeapon) items = Info.Instance().Weapons;
+			else if (Type == eType.eArmor) items = Info.Instance().Armors;
 
 			foreach (var item in items)
 			{
