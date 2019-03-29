@@ -91,6 +91,30 @@ namespace FF7
 			chara.Weapon = dlg.ID;
 		}
 
+		private void ButtonArmorChoice_Click(object sender, RoutedEventArgs e)
+		{
+			var chara = ListBoxParty.SelectedItem as Charactor;
+			if (chara == null) return;
+
+			var dlg = new ChoiceWindow();
+			dlg.Type = ChoiceWindow.eType.eArmor;
+			dlg.ID = chara.Armor;
+			dlg.ShowDialog();
+			chara.Armor = dlg.ID;
+		}
+
+		private void ButtonAccessoryChoice_Click(object sender, RoutedEventArgs e)
+		{
+			var chara = ListBoxParty.SelectedItem as Charactor;
+			if (chara == null) return;
+
+			var dlg = new ChoiceWindow();
+			dlg.Type = ChoiceWindow.eType.eAccessory;
+			dlg.ID = chara.Accessory;
+			dlg.ShowDialog();
+			chara.Accessory = dlg.ID;
+		}
+
 		private void Load(String filename, bool force)
 		{
 			if (SaveData.Instance().Open(filename, force) == false)

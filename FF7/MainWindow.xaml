@@ -132,6 +132,7 @@
                                     <Grid.Resources>
                                         <local:WeaponConverter x:Key="WeaponConverter"/>
                                         <local:ArmorConverter x:Key="ArmorConverter"/>
+                                        <local:AccessoryConverter x:Key="AccessoryConverter"/>
                                     </Grid.Resources>
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
@@ -149,8 +150,10 @@
                                     <Button Grid.Column="2" Content="..." Click="ButtonWeaponChoice_Click"/>
                                     <Label Grid.Row="1" Content="Armor"/>
                                     <Label Grid.Row="1" Grid.Column="1" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Armor, Converter={StaticResource ArmorConverter}}"/>
-                                    <Button Grid.Row="1" Grid.Column="2" Content="..." Click="ButtonWeaponChoice_Click"/>
+                                    <Button Grid.Row="1" Grid.Column="2" Content="..." Click="ButtonArmorChoice_Click"/>
                                     <Label Grid.Row="2" Content="Accessory"/>
+                                    <Label Grid.Row="2" Grid.Column="1" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Accessory, Converter={StaticResource AccessoryConverter}}"/>
+                                    <Button Grid.Row="2" Grid.Column="2" Content="..." Click="ButtonAccessoryChoice_Click"/>
                                 </Grid>
                             </TabItem>
                             <TabItem Header="Limit">

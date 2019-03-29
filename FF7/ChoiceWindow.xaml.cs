@@ -24,6 +24,7 @@ namespace FF7
 			eItem,
 			eWeapon,
 			eArmor,
+			eAccessory,
 		};
 
 		public uint ID { get; set; }
@@ -62,6 +63,7 @@ namespace FF7
 			var items = Info.Instance().Items;
 			if (Type == eType.eWeapon) items = Info.Instance().Weapons;
 			else if (Type == eType.eArmor) items = Info.Instance().Armors;
+			else if (Type == eType.eAccessory) items = Info.Instance().Accessorys;
 
 			foreach (var item in items)
 			{
