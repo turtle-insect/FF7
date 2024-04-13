@@ -8,7 +8,7 @@ http://www.jp.square-enix.com/ff7sp/
 
 # 実行に必要
 * Windows マシン
-* .NET Framework 4.7.1の導入
+* .NET Framework 4.8の導入
 * セーブデータの吸い出し
 * セーブデータの書き戻し
 
